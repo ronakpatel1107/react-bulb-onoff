@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  text-align: -webkit-center;
 }
 
 .App-logo {
@@ -7,15 +8,27 @@
   pointer-events: none;
 }
 
+form input {
+  border-radius: 10px;
+  border-width: thin;
+  height: vh;
+  width: 25vw;
+}
 
-table {border-collapse: collapse; font-family: helvetica}
+
+table {border-collapse: collapse; font-family: helvetica;}
 td, tr {
       border:  1px solid;
       padding: 10px;
       min-width: 200px;
       background: white;
       box-sizing: border-box;
-      text-align: left;
+      text-align: center;
+}
+
+table thead td {
+  background-color: rgba(247, 0, 255, 0.125);
+  font-weight: bold;
 }
 
 

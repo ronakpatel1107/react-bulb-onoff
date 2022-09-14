@@ -1,89 +1,51 @@
 
+// 5 On-OFF buttons 
+
 import './App.css';
 import bulb_off from './components/images/bulb_off.jpg';
 import bulb_on from './components/images/bulb_on.jpg';
 import React from 'react'
 
-// To do list
-
 class App extends React.Component {
   constructor(props) {
     super(props);
     // this.changeState =this.changeState.bind(this)
-    this.state = {
-      name:"",
-      city:"",
-      age:"",
+    this.state = {arr: [{
+      'button': false
+    },
+    {
+      'button': false
+    },
+    {
+      'button': false
+    },
+    {
+      'button': false
+    },
+    {
+      'button': false
+    }]
     };
   }
-  handleSubmit =(event)=>{
-    this.setState({name:event.target.name.value, city:event.target.city.value, age:event.target.age.value})
-  }
-
+     
+  changeState =(index)=>{
+    let temp =this.state.arr;
+    temp[index].button=!(temp[index].button);
+    this.setState({arr:temp});
+} 
 
   render(){
- 
     return(
       <div>
-          <form>
-          <label for="name">Name:</label>
-          <input type="text" name="name" value={this.state.name} onChange={this.handleChange}/>
-          <label for="city">City:</label>
-          <input type="text" name="city" value={this.state.city} onChange={this.handleChange}/>
-          <label for="age">Age:</label>
-          <input type="text"  name="age" value={this.state.age} onChange={this.handleChange}/>
-          <input type="button" value="Submit" />
-        </form>
-     
+      
+      {this.state.arr.map((ele,index)=>{
+              return (<div><img src={ele.button?bulb_off:bulb_on}></img><button onClick={()=>this.changeState(index)} >{ele.button?"OFF":"ON"}</button></div>)
+           })}
      </div>
   )
   }
 }
 export default App
-
-
-
-// 5 On-OFF buttons 
-// class App extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     // this.changeState =this.changeState.bind(this)
-//     this.state = {arr: [{
-//       'button': false
-//     },
-//     {
-//       'button': false
-//     },
-//     {
-//       'button': false
-//     },
-//     {
-//       'button': false
-//     },
-//     {
-//       'button': false
-//     }]
-//     };
-//   }
-  
-//   changeState =(index)=>{
-//     let temp =this.state.arr;
-//     temp[index].button=!(temp[index].button);
-//     this.setState({arr:temp});
-// } 
- 
-//   render(){
-//     return(
-//       <div>
-      
-//       {this.state.arr.map((ele,index)=>{
-//               return (<div><img src={ele.button?bulb_off:bulb_on}></img><button onClick={()=>this.changeState(index)} >{ele.button?"OFF":"ON"}</button></div>)
-//            })}
-//      </div>
-//   )
-//   }
-// }
-// export default App
 
 
 // 1- on-off bulb
